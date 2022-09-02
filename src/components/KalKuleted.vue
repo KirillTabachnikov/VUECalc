@@ -10,6 +10,7 @@
             <button @click="sub">-</button>
             <button @click="div">/</button>
             <button @click="mult">*</button>
+            <button @click="exp">степень</button>
         </div>
     </div>
 </template>
@@ -34,7 +35,11 @@ export default {
         },
         mult() {
             this.result = this.op1 * this.op2
+        },
+        exp() {
+            this.result = this.op1 * this.op1
         }
+
     }
 
 }
