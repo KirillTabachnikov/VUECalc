@@ -7,8 +7,8 @@
         </div>
         <div class="keybord">
             <button @click="sum">+</button>
-            <button @click="div">/</button>
             <button @click="sub">-</button>
+            <button @click="div">/</button>
             <button @click="mult">*</button>
         </div>
     </div>
