@@ -5,42 +5,63 @@
             <input type="number" v-model.number="op2">
             = {{ result }}
         </div>
-        <div class="keybord">
-            <button @click="sum">+</button>
-            <button @click="sub">-</button>
-            <button @click="div">/</button>
-            <button @click="mult">*</button>
-            <button @click="exp">степень</button>
+        <div class="keyboard">
+            <button @click="calculate('+')">+</button>
+            <button @click="calculate('-')">-</button>
+            <button @click="calculate('/')">/</button>
+            <button @click="calculate('*')">*</button>
+            <button @click="calculate('^')">^</button>
+            <button @click="calculate('%')">%</button>
         </div>
     </div>
 </template>
-
+  
 <script>
 export default {
-    name: 'KalKuleted',
-    data: () => ({
-        op1: 0,
-        op2: 0,
-        result: 0
-    }),
+    name: 'Calculator',
+    data() {
+        return {
+            op1: 0,
+            op2: 0,
+            result: 0,
+        }
+    },
     methods: {
         sum() {
-            this.result = this.op1 + this.op2
-        },
-        div() {
-            this.result = this.op1 / this.op2
+            const { op1, op2 } = this;
+            this.result = op1 + op2;
         },
         sub() {
-            this.result = this.op1 - this.op2
+            const { op1, op2 } = this;
+            this.result = op1 - op2;
+        },
+        div() {
+            const { op1, op2 } = this;
+            this.result = op1 / op2;
         },
         mult() {
-            this.result = this.op1 * this.op2
+            const { op1, op2 } = this;
+            this.result = op1 * op2;
         },
-        exp() {
-            this.result = this.op1 * this.op1
-        }
-
-    }
-
+        pow() {
+            const { op1, op2 } = this;
+            this.result = Math.pow(op1, op2);
+        },
+        trunc() {
+            const { op1, op2 } = this;
+            this.result = Math.trunc(op1 / op2);
+        },
+        calculate(operation) {
+            switch (operation) {
+                case '+': this.sum(); break;
+                case '-': this.sub(); break;
+                case '/': this.div(); break;
+                case '*': this.mult(); break;
+                case '^': this.pow(); break;
+                case '%': this.trunc(); break;
+            }
+        },
+    },
 }
 </script>
+  
